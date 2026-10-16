@@ -1,0 +1,7 @@
+id,name,quantity,node,weightKg
+P001,Rice 5kg,40,1,5
+P002,Cooking Oil 1L,25,1,1
+P003,Laptop,5,2,2.5
+P004,Mobile Phone,12,2,0.4
+P005,Office Chair,3,3,12
+P006,Water Bottle Pack,60,4,8

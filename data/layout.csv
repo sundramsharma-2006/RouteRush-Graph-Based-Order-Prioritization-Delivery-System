@@ -1,0 +1,22 @@
+# Warehouse + city graph used by the demo (same as defaultWarehouse())
+N,Depot
+N,ZoneA
+N,ZoneB
+N,ZoneC
+N,ZoneD
+N,Packing
+N,CityNorth
+N,CitySouth
+N,CityEast
+E,Depot,ZoneA,10
+E,Depot,ZoneB,15
+E,ZoneA,ZoneB,5
+E,ZoneA,ZoneC,12
+E,ZoneB,ZoneD,8
+E,ZoneC,ZoneD,6
+E,ZoneC,Packing,7
+E,ZoneD,Packing,9
+E,Packing,CityNorth,20
+E,Packing,CitySouth,35
+E,CityNorth,CityEast,25
+E,CitySouth,CityEast,15
