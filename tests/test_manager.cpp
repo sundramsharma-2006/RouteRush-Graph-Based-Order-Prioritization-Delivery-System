@@ -9,10 +9,10 @@ struct Rig {
     Inventory inv;
     Fleet fleet = Fleet::standard(2, 1, 1);
     Rig() {
-        inv.addProduct({"P1", "Rice", 10, 1, 5.0});      // ZoneA
-        inv.addProduct({"P2", "Laptop", 2, 2, 2.5});     // ZoneB
-        inv.addProduct({"P3", "Chair", 4, 3, 12.0});     // ZoneC
-        inv.addProduct({"P4", "Water", 100, 4, 8.0});    // ZoneD
+        inv.addProduct({"P1", "Rice", 10, 1, 5.0});      // Grocery Aisle
+        inv.addProduct({"P2", "Laptop", 2, 2, 2.5});     // Electronics Aisle
+        inv.addProduct({"P3", "Chair", 4, 3, 12.0});     // Furniture Aisle
+        inv.addProduct({"P4", "Water", 100, 4, 8.0});    // Bulk Aisle
     }
     WarehouseManager make(WarehouseManager::Config c = WarehouseManager::Config()) {
         return WarehouseManager(L.graph, inv, fleet, L.depot, L.packing, c);
@@ -31,7 +31,7 @@ TEST(manager_delivers_and_updates_stock) {
     DeliveryRecord rec = wm.process(o, 0, busy);
     CHECK(rec.status == OrderStatus::DELIVERED && o.status == OrderStatus::DELIVERED);
     CHECK(r.inv.find("P1")->quantity == 8 && r.inv.find("P2")->quantity == 1);
-    CHECK(rec.pickDistance > 0 && rec.deliveryDistance == 20.0);
+    CHECK(rec.pickDistance > 0 && rec.deliveryDistance == 40.0);
     CHECK(rec.vehicles == "Van:V1");                       // 2*5 + 2.5 = 12.5 kg exceeds the 10 kg bike
 }
 

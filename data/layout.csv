@@ -1,22 +1,26 @@
-# Warehouse + city graph used by the demo (same as defaultWarehouse())
+# RouteRush layout: warehouse = Graphic Era (Deemed to be University), Bell Road, Clement Town, Dehradun.
+# Nodes 0-5 are inside the warehouse (Depot and Packing are required names); nodes 6-8 are delivery points in Dehradun.
+# Warehouse edge weights are walking-cost units. Road edges are APPROXIMATE road distances, 1 unit = 100 m
+# (rounded from public map/tourism figures; check on Google Maps before quoting them).
 N,Depot
-N,ZoneA
-N,ZoneB
-N,ZoneC
-N,ZoneD
+N,Grocery Aisle
+N,Electronics Aisle
+N,Furniture Aisle
+N,Bulk Aisle
 N,Packing
-N,CityNorth
-N,CitySouth
-N,CityEast
-E,Depot,ZoneA,10
-E,Depot,ZoneB,15
-E,ZoneA,ZoneB,5
-E,ZoneA,ZoneC,12
-E,ZoneB,ZoneD,8
-E,ZoneC,ZoneD,6
-E,ZoneC,Packing,7
-E,ZoneD,Packing,9
-E,Packing,CityNorth,20
-E,Packing,CitySouth,35
-E,CityNorth,CityEast,25
-E,CitySouth,CityEast,15
+N,ISBT Dehradun
+N,Clock Tower
+N,Railway Station
+E,Depot,Grocery Aisle,10
+E,Depot,Electronics Aisle,15
+E,Grocery Aisle,Electronics Aisle,5
+E,Grocery Aisle,Furniture Aisle,12
+E,Electronics Aisle,Bulk Aisle,8
+E,Furniture Aisle,Bulk Aisle,6
+E,Furniture Aisle,Packing,7
+E,Bulk Aisle,Packing,9
+E,Packing,ISBT Dehradun,40
+E,Packing,Clock Tower,70
+E,Packing,Railway Station,80
+E,ISBT Dehradun,Clock Tower,70
+E,Clock Tower,Railway Station,20

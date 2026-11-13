@@ -14,8 +14,8 @@ struct MenuRig {
     std::ostringstream out;
     MenuRig(const std::string& script) : in(script) {
         li.depot = L.depot; li.packing = L.packing;
-        catalog.push_back({"P1", "Rice", 10, 1, 5.0});       // ZoneA
-        catalog.push_back({"P2", "Laptop", 1, 2, 2.5});      // ZoneB, only 1 in stock
+        catalog.push_back({"P1", "Rice", 10, 1, 5.0});       // Grocery Aisle
+        catalog.push_back({"P2", "Laptop", 1, 2, 2.5});      // Electronics Aisle, only 1 in stock
     }
     Menu make() {
         Menu m(L.graph, li, catalog, orders, WarehouseManager::Config(), "unused", in, out);
@@ -26,7 +26,7 @@ struct MenuRig {
 }  // namespace
 
 TEST(menu_add_order_then_run_delivers_it) {
-    // 4 = add order: customer, node 6 (CityNorth), priority word (any case), arrival default, deadline default,
+    // 4 = add order: customer, node 6 (ISBT Dehradun), priority word (any case), arrival default, deadline default,
     // one line P1 x2, blank ends lines, confirm y.   7 = run.   0 = exit.
     MenuRig r("4\nZara\n6\nurgent\n\n\nP1\n2\n\ny\n7\n0\n");
     Menu m = r.make();
@@ -39,9 +39,9 @@ TEST(menu_add_order_then_run_delivers_it) {
 }
 
 TEST(menu_rejects_bad_input_and_asks_again) {
-    // bad node "99" then "CitySouth" (by name, any case); bad priority "9" then "2";
+    // bad node "99" then "Clock Tower" (by name, any case); bad priority "9" then "2";
     // unknown product "ZZ" then "P1"; quantity "-3" and "abc" then "1"; confirm y
-    MenuRig r("4\nAli\n99\ncitysouth\n9\n2\n5\n\nZZ\nP1\n-3\nabc\n1\n\ny\n0\n");
+    MenuRig r("4\nAli\n99\nclock tower\n9\n2\n5\n\nZZ\nP1\n-3\nabc\n1\n\ny\n0\n");
     Menu m = r.make();
     m.run();
     CHECK(m.orders().size() == 1);
@@ -78,7 +78,7 @@ TEST(menu_restock_turns_a_rejection_into_a_delivery) {
 
 TEST(menu_add_product_validates_and_extends_catalog) {
     // duplicate id P1 -> asked again -> P3; negative-looking weight "0" -> asked again -> 1.5
-    MenuRig r("5\nP1\nP3\nChair\n4\nzonec\n0\n1.5\n0\n");
+    MenuRig r("5\nP1\nP3\nChair\n4\nfurniture aisle\n0\n1.5\n0\n");
     Menu m = r.make();
     m.run();
     CHECK(m.catalog().size() == 3);

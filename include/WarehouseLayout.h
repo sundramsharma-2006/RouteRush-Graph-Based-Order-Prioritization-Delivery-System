@@ -14,24 +14,26 @@ struct Layout {
     std::vector<int> destNodes;    // customer areas
 };
 
+// Warehouse = Graphic Era (Deemed to be University), Dehradun; nodes 6-8 are real delivery points.
+// Road edges are approximate (1 unit = 100 m); same data as data/layout.csv.
 inline Layout defaultWarehouse() {
     Layout L;
     Graph& g = L.graph;
     L.depot = g.addNode("Depot");          // 0
-    int a = g.addNode("ZoneA");            // 1
-    int b = g.addNode("ZoneB");            // 2
-    int c = g.addNode("ZoneC");            // 3
-    int d = g.addNode("ZoneD");            // 4
+    int a = g.addNode("Grocery Aisle");            // 1
+    int b = g.addNode("Electronics Aisle");            // 2
+    int c = g.addNode("Furniture Aisle");            // 3
+    int d = g.addNode("Bulk Aisle");            // 4
     L.packing = g.addNode("Packing");      // 5
-    int north = g.addNode("CityNorth");    // 6
-    int south = g.addNode("CitySouth");    // 7
-    int east  = g.addNode("CityEast");     // 8
+    int north = g.addNode("ISBT Dehradun"); // 6
+    int south = g.addNode("Clock Tower");    // 7
+    int east  = g.addNode("Railway Station"); // 8
     g.addEdge(L.depot, a, 10); g.addEdge(L.depot, b, 15);
     g.addEdge(a, b, 5);  g.addEdge(a, c, 12);
     g.addEdge(b, d, 8);  g.addEdge(c, d, 6);
     g.addEdge(c, L.packing, 7);  g.addEdge(d, L.packing, 9);
-    g.addEdge(L.packing, north, 20);  g.addEdge(L.packing, south, 35);
-    g.addEdge(north, east, 25);       g.addEdge(south, east, 15);
+    g.addEdge(L.packing, north, 40);  g.addEdge(L.packing, south, 70);  g.addEdge(L.packing, east, 80);
+    g.addEdge(north, south, 70);      g.addEdge(south, east, 20);
     L.shelfNodes = {a, b, c, d};
     L.destNodes = {north, south, east};
     return L;
