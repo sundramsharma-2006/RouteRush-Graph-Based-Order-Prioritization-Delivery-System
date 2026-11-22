@@ -1,0 +1,544 @@
+\documentclass[12pt,a4paper]{article}
+
+% ============================================================
+% PACKAGES
+% ============================================================
+\usepackage[
+    a4paper,
+    top=1.55cm,
+    bottom=1.35cm,
+    left=1.75cm,
+    right=1.75cm
+]{geometry}
+
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usepackage{ragged2e}
+
+% ============================================================
+% COLORS
+% ============================================================
+\definecolor{GEUBlue}{RGB}{43,91,145}
+\definecolor{GEUBannerBlue}{RGB}{0,102,148}
+\definecolor{GEUYellow}{RGB}{255,201,38}
+\definecolor{InstructionGrey}{RGB}{125,125,125}
+
+% ============================================================
+% GENERAL SETTINGS
+% ============================================================
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\renewcommand{\arraystretch}{1}
+
+% ============================================================
+% HEADER / FOOTER
+% ============================================================
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{%
+    \fontsize{10.5}{12}\selectfont
+    COURSE NAME AND ID
+}
+
+\fancyhead[R]{%
+    \fontsize{10.5}{12}\selectfont
+    PHASE-III PROJECT PROGRESS
+}
+
+\fancyfoot[R]{%
+    \fontsize{10}{12}\selectfont
+    Page \thepage
+}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\setlength{\headheight}{20pt}
+\setlength{\headsep}{0.65cm}
+\setlength{\footskip}{0.65cm}
+
+% ============================================================
+% BOTTOM YELLOW LINE
+% ============================================================
+\AddToShipoutPictureBG{%
+\begin{tikzpicture}[remember picture,overlay]
+    \fill[GEUYellow]
+    (current page.south west)
+    rectangle
+    ([yshift=0.14cm]current page.south east);
+\end{tikzpicture}
+}
+
+% ============================================================
+% CUSTOM COMMANDS
+% ============================================================
+\newcommand{\sectiontitle}[1]{%
+    {\color{GEUBlue}
+    \fontsize{18}{22}\selectfont #1}
+}
+
+\newcommand{\instruction}[1]{%
+    {\color{InstructionGrey}
+    \fontsize{10.5}{13}\selectfont #1}
+}
+
+\newcommand{\answerbox}[2]{%
+    \begin{tabularx}{\textwidth}{
+        |>{\raggedright\arraybackslash}X|}
+        \hline
+        \parbox[t][#1][t]{\dimexpr\linewidth-12pt\relax}{
+            \vspace{5pt}
+            \fontsize{11}{13}\selectfont #2
+        }\\
+        \hline
+    \end{tabularx}
+}
+
+% ============================================================
+% DOCUMENT
+% ============================================================
+\begin{document}
+
+% ============================================================
+% PAGE 1
+% ============================================================
+
+\vspace*{0.10cm}
+
+\includegraphics[width=8.0cm]{geulogo.png}
+
+\vspace{0.70cm}
+
+\noindent
+\colorbox{GEUBannerBlue}{%
+\parbox{\dimexpr\textwidth-2\fboxsep\relax}{
+    \vspace{0.17cm}
+    {\color{GEUYellow}
+    \fontsize{16.5}{20}\selectfont
+    \bfseries
+    PROJECT AND TEAM INFORMATION}
+    \vspace{0.17cm}
+}}
+
+\vspace{0.80cm}
+
+% PROJECT TITLE
+\sectiontitle{Project Title}
+
+\vspace{0.05cm}
+
+\instruction{(Try to choose a catchy title. Max 20 words).}
+
+\vspace{0.40cm}
+
+\answerbox{1.00cm}{RouteRush: Graph-Based Order Prioritization \& Delivery System}
+
+\vspace{0.80cm}
+
+% TEAM INFORMATION
+% \sectiontitle{Student/Team Information}
+
+% \vspace{0.40cm}
+
+% \begin{tabularx}{\textwidth}{
+% |>{\raggedright\arraybackslash}p{0.66\textwidth}
+% |>{\raggedright\arraybackslash}X|
+% }
+% \hline
+
+% \parbox[t][1.15cm][t]{\linewidth}{
+% \vspace{4pt}
+% \fontsize{10.5}{13}\selectfont
+% Team Name:\\[2pt]
+% Team \# (Mentor needs to assign)
+% }
+% &
+% \\
+% \hline
+
+% \parbox[t][3.65cm][t]{\linewidth}{
+% \vspace{5pt}
+% \fontsize{10.5}{13}\selectfont
+% Team member 1 (Team Lead)\\[3pt]
+% {\color{InstructionGrey}
+% (Last Name, name: student ID: email, picture):}
+% }
+% &
+% \\
+% \hline
+
+% \parbox[t][3.65cm][t]{\linewidth}{
+% \vspace{5pt}
+% \fontsize{10.5}{13}\selectfont
+% Team member 2\\[3pt]
+% {\color{InstructionGrey}
+% (Last Name, name: student ID: email, picture):}
+% }
+% &
+% \\
+% \hline
+
+% \end{tabularx}
+
+% \newpage
+
+% ============================================================
+% PAGE 2
+% ============================================================
+\noindent
+\begin{tabularx}{\textwidth}{|>{\RaggedRight\arraybackslash}p{0.69\textwidth}|>{\RaggedRight\arraybackslash}X|}
+\hline
+\begin{minipage}[t]{\linewidth}
+\vspace{1.5mm}
+\textit{Team Name:}\\[-1mm]
+\textit{Team \#}
+\vspace{1.5mm}
+\end{minipage}
+&
+\begin{minipage}[t]{\linewidth}
+\vspace{1.5mm}
+\textit{404 CREW}\\[-1mm]
+\textit{DSCPP-III-2026-T090}
+\vspace{1.5mm}
+\end{minipage}
+\\
+\hline
+\begin{minipage}[t][3.25cm][t]{\linewidth}
+\vspace{1.5mm}
+\textbf{Team member 1 (Team Lead)}\\[-1mm]
+\textit{(Last Name, name: student ID: email, picture):}
+\vspace{2.0cm}
+\end{minipage}
+&
+\begin{minipage}[t][3.25cm][t]{\linewidth}
+\vspace{1.5mm}
+{\small\textit{Sharma, Sundram -- 2028872}\\
+\textit{mr.sundram2006@gmail.com}}
+
+\vspace{2mm}
+\includegraphics[width=3.0cm,height=1.5cm,keepaspectratio]{member1.png}
+\end{minipage}
+\\
+\hline
+\begin{minipage}[t][3.25cm][t]{\linewidth}
+\vspace{1.5mm}
+\textbf{Team member 2}\\[-1mm]
+\textit{(Last Name, name: student ID: email, picture):}
+\vspace{2.0cm}
+\end{minipage}
+&
+\begin{minipage}[t][3.25cm][t]{\linewidth}
+\vspace{1.5mm}
+{\small\textit{Kumari, Arya -- 2028665}\\
+\textit{aryashahi847@gmail.com}}
+
+\vspace{2mm}
+\includegraphics[width=3.0cm,height=1.5cm,keepaspectratio]{member2.png}
+\end{minipage}
+\\
+\hline
+\begin{minipage}[t][3.25cm][t]{\linewidth}
+\vspace{1.5mm}
+\textbf{Team member 3}\\[-1mm]
+\textit{(Last Name, name: student ID: email, picture):}
+\vspace{2.0cm}
+\end{minipage}
+&
+\begin{minipage}[t][3.25cm][t]{\linewidth}
+\vspace{1.5mm}
+{\small\textit{Agarwal, Samriddhi -- 2028482}\\
+\textit{samagl7307@gmail.com}}
+
+\vspace{2mm}
+\includegraphics[width=3.0cm,height=1.5cm,keepaspectratio]{member3.png}
+\end{minipage}
+\\
+\hline
+\begin{minipage}[t][3.25cm][t]{\linewidth}
+\vspace{1.5mm}
+\textbf{Team member 4}\\[-1mm]
+\textit{(Last Name, name: student ID: email, picture):}
+\vspace{2.0cm}
+\end{minipage}
+&
+\begin{minipage}[t][3.25cm][t]{\linewidth}
+\vspace{1.5mm}
+{\small\textit{Sirohi, Ishita -- 2028730}\\
+\textit{iishitasingh20@gmail.com}}
+
+\vspace{2mm}
+ \includegraphics[width=3.0cm,height=1.5cm,keepaspectratio]{member4.png}
+\end{minipage}
+\\
+\hline
+\end{tabularx}
+
+\newpage
+\vspace*{0.15cm}
+
+\noindent
+\colorbox{GEUBannerBlue}{%
+\parbox{\dimexpr\textwidth-2\fboxsep\relax}{
+    \vspace{0.18cm}
+    {\color{GEUYellow}
+    \fontsize{17}{21}\selectfont
+    \bfseries
+    PHASE-III PROJECT PROGRESS DESCRIPTION (35 pts)}
+    \vspace{0.18cm}
+}}
+
+\vspace{0.70cm}
+
+% ABSTRACT
+\sectiontitle{Project Abstract (2 pts)}
+
+\vspace{0.05cm}
+
+\instruction{
+(Brief restatement of your project's main goal. Max 300 words).
+}
+
+\vspace{0.12cm}
+
+\answerbox{3.60cm}{{\small RouteRush is a C++17 system that takes a warehouse order from placement to delivery using classroom data structures and algorithms: a hash-map inventory, a priority queue with aging, a warehouse graph with Dijkstra, nearest-neighbour and 2-opt picking routes, fleet assignment and a delivery log. The aim is to cut urgent waits, late deliveries and picking distance versus FIFO and typed-order baselines. The backend was finished in Phase-II. In Phase-III we added a web dashboard with a 3D map of the Graphic Era warehouse and three Dehradun delivery points (ISBT, Clock Tower, Railway Station), where a user manages orders and stock, runs a policy, watches the routes and compares with FIFO.\par}}
+
+\vspace{0.70cm}
+
+% UPDATED APPROACH
+\sectiontitle{Updated Project Approach and Architecture (2 pts)}
+
+\vspace{0.05cm}
+
+\instruction{
+(Describe your current approach, including system design,
+communication protocols, libraries used, etc.\\
+Max 300 words).
+}
+
+\vspace{0.25cm}
+
+\answerbox{4.75cm}{{\small Single-process C++17 backend using only the STL; CSV files hold products, orders and the layout. \textbf{Pipeline per order:} validate, plan picking route, plan vehicles, reserve stock (all-or-nothing), commit, log; a rejected order changes nothing. \textbf{Backend:} HashMap/Inventory, OrderQueue (heap with aging), Graph/RoutePlanner (Dijkstra, nearest-neighbour, 2-opt), Fleet, WarehouseManager. \textbf{Phase-III frontend:} browser (HTML, CSS, JavaScript, three.js for 3D) $\rightarrow$ HTTP/1.1 $\rightarrow$ JSON API (\texttt{Api}) $\rightarrow$ \texttt{Session} (validated lists of products and orders) $\rightarrow$ backend. A small threaded socket server (\texttt{HttpServer}) listens on 127.0.0.1 only and serves the pages (\texttt{StaticFiles}, path-checked). HTTP parsing, file serving and the API contain no socket code, so they are unit-tested in memory. Each run replays all orders on a fresh inventory and fleet, so inputs are never used up; the response includes every order's node-by-node route, which the browser animates.\par}}
+
+\newpage
+
+% ============================================================
+% PAGE 3
+% ============================================================
+
+\vspace*{0.20cm}
+
+% TASKS COMPLETED
+\sectiontitle{Tasks Completed (7 pts)}
+
+\vspace{0.05cm}
+
+\instruction{
+(Describe the main tasks that have been assigned and already completed.
+Max 250 words).
+}
+
+\vspace{0.20cm}
+
+\begin{tabularx}{\textwidth}{
+|>{\raggedright\arraybackslash}X
+|>{\raggedright\arraybackslash}X|
+}
+\hline
+
+\textbf{Task Completed} &
+\textbf{Team Member}
+\\
+\hline
+
+\parbox[t][3.25cm][t]{\linewidth}{\small 1. Pipeline, fleet, API, server, dashboard pages, menu\\
+2. Hash map, inventory, aging queue, HTTP parsing\\
+3. Graph, Dijkstra, route planner, 3D scene\\
+4. CSV stores, benchmarks, test framework, API tests\par}
+&
+\parbox[t][3.25cm][t]{\linewidth}{\small 1. Sundram Sharma\\
+2. Samriddhi Agarwal\\
+3. Arya Kumari\\
+4. Ishita Sirohi\par}
+\\
+\hline
+
+\end{tabularx}
+
+\vspace{0.65cm}
+
+% CHALLENGES
+\sectiontitle{Challenges/Roadblocks (7 pts)}
+
+\vspace{0.05cm}
+
+\instruction{
+(Describe the challenges that you have faced or are facing so far
+and how you plan to solve them. Max 300 words).
+}
+
+\vspace{0.18cm}
+
+\answerbox{4.05cm}{{\small \textbf{1. Toolchain:} the code needs C++17, but an old MinGW (GCC 6.3) failed on structured bindings and inline variables; we installed a current GCC (WinLibs) and put it first on PATH.\\
+\textbf{2. Sockets:} the STL has none and Windows and Linux differ, so we kept them in one header. Browsers open idle connections that can stall a one-at-a-time server, so each connection gets a thread and one lock guards the state.\\
+\textbf{3. Not live:} each run replays the whole order list; real-time mode is future work.\\
+\textbf{4. Trade-off:} against the FIFO and naive-picking baseline, priority with aging cut URGENT wait from 82.0 to 17.5 ticks and late orders from 1 to 0, but EXPRESS and NORMAL waits rose 30\% and 51\%.\par}}
+
+\vspace{0.65cm}
+
+% TASKS PENDING
+% \sectiontitle{Tasks Pending (7 pts)}
+
+% \vspace{0.05cm}
+
+% \instruction{
+% (Describe the main tasks that you still need to complete.
+% Max 250 words).
+% }
+
+% \vspace{0.18cm}
+
+% \begin{tabularx}{\textwidth}{
+% |>{\raggedright\arraybackslash}X
+% |>{\raggedright\arraybackslash}X|
+% }
+% \hline
+
+% \textbf{Task Pending} &
+% \textbf{Team Member (to complete the task)}
+% \\
+% \hline
+
+% \parbox[t][1.25cm][t]{\linewidth}{}
+% &
+% \parbox[t][1.25cm][t]{\linewidth}{}
+% \\
+% \hline
+
+% \end{tabularx}
+
+% \newpage
+
+% ============================================================
+% PAGE 4
+% ============================================================
+
+\vspace*{0.30cm}
+
+% OUTCOMES
+\sectiontitle{Project Outcome/Deliverables (2 pts)}
+
+\vspace{0.05cm}
+
+\instruction{
+(Describe what are the key outcomes / deliverables of the project.
+Max 200 words).
+}
+
+\vspace{0.35cm}
+
+\answerbox{3.35cm}{{\small A complete, tested C++ backend (hash-map inventory, aging priority queue, graph with Dijkstra, picking-route heuristics, fleet assignment, CSV persistence, delivery log and metrics); a terminal menu; a local web dashboard (orders, inventory, simulation playback in 3D, policy comparison, warehouse map with a route finder); unit, pipeline, menu and API tests; benchmarks against baselines; design and testing documents; and a GitHub repository with per-member commits.\par}}
+
+\vspace{0.75cm}
+
+% PROGRESS
+\sectiontitle{Progress Overview (2 pts)}
+
+\vspace{0.05cm}
+
+\instruction{
+(Summarize how much of the project is done, what's behind schedule,
+what's ahead of schedule. Max 200 words.)
+}
+
+\vspace{0.25cm}
+
+\answerbox{4.45cm}{{\small \textbf{Done:} everything planned in Phase-I works and is tested: the backend, plus a terminal menu and a web dashboard added in Phase-III. \textbf{Ahead:} 2-opt route improvement, aging, a deadline-aware simulation, benchmarks, the 3D simulation playback, the policy-comparison page and a hand-written HTTP layer go beyond the Phase-I proposal. \textbf{Not done:} Phase-I mentioned a database but we use CSV file handling only; product sorting and separate Customer/DeliveryAgent classes were not implemented (the customer is a field of the order). \textbf{Limits:} all data is synthetic, the frontend has no login and runs on localhost only, and each run replays the whole order list instead of working live.\par}}
+
+\newpage
+
+% ============================================================
+% PAGE 5
+% ============================================================
+
+\vspace*{0.20cm}
+
+% CODEBASE
+\sectiontitle{Codebase Information (2 pts)}
+
+\vspace{0.05cm}
+
+\instruction{
+(Repository link, branch, and information about important commits.)
+}
+
+\vspace{0.20cm}
+
+\answerbox{3.70cm}{{\small \textbf{Repository:} \texttt{https://github.com/sundramsharma-2006/}\\
+\texttt{RouteRush-Graph-Based-Order-Prioritization-Delivery-System} (branch \texttt{main}). \textbf{Folders:} \texttt{include/} (modules, \texttt{Session.h}, \texttt{Api.h}, \texttt{Http.h}, \texttt{HttpServer.h}, \texttt{StaticFiles.h}, \texttt{Menu.h}), \texttt{src/} (\texttt{main.cpp}, \texttt{server.cpp}), \texttt{web/} (HTML, CSS, JS), \texttt{tests/}, \texttt{bench/}, \texttt{data/}, \texttt{docs/}. \textbf{Important commits:} \texttt{4ef7561} terminal menu; \texttt{9dcccbe} menu tests and \texttt{run.bat}; then one commit per frontend part (session, HTTP and static files, JSON API, server, 3D scene, dashboard pages, API tests, build files, README), each by its owner; earlier commits cover the Phase-II backend.\par}}
+
+\vspace{0.65cm}
+
+% TESTING
+\sectiontitle{Testing and Validation Status (2 pts)}
+
+\vspace{0.05cm}
+
+\instruction{(Provide information about any tests conducted)}
+
+\vspace{0.30cm}
+
+\begin{tabularx}{\textwidth}{
+|>{\raggedright\arraybackslash}p{0.34\textwidth}
+|>{\raggedright\arraybackslash}p{0.31\textwidth}
+|>{\raggedright\arraybackslash}X|
+}
+\hline
+
+\textbf{Test Type} &
+\textbf{Status (Pass/Fail)} &
+\textbf{Notes}
+\\
+\hline
+
+\parbox[t][1.20cm][t]{\linewidth}{\scriptsize 1. Unit and pipeline tests\\
+2. Menu and frontend API tests\\
+3. Benchmarks vs baselines\par}
+&
+\parbox[t][1.20cm][t]{\linewidth}{\scriptsize Pass\\
+Pass\\
+Done\par}
+&
+\parbox[t][1.20cm][t]{\linewidth}{\scriptsize 68 tests, 793 checks in all\\
+HTTP parsing, JSON API, bad input\\
+synthetic data; limits in docs\par}
+\\
+\hline
+
+\end{tabularx}
+
+\vspace{0.65cm}
+
+% DELIVERABLES
+\sectiontitle{Deliverables Progress (2 pts)}
+
+\vspace{0.05cm}
+
+\instruction{
+(Summarize the current status of all key project deliverables
+mentioned earlier. Indicate whether each deliverable is completed,
+in progress, or pending.)
+}
+
+\vspace{0.25cm}
+
+\answerbox{3.20cm}{{\small \textbf{Completed:} backend for products, orders, inventory, locations, vehicles and deliveries; hash-map lookup; priority queue with aging; graph with adjacency list; Dijkstra routes; file handling; end-to-end pipeline; terminal menu; web dashboard with 3D simulation and policy comparison; 68 tests (793 checks) passing; benchmarks. \textbf{Partial:} sorting routines (queue done, product sorting not implemented). \textbf{Pending:} evaluation on more layouts and loads, final demo.\par}}
+
+\end{document}
