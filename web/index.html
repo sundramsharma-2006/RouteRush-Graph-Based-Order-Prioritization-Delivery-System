@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RouteRush</title>
+<meta name="description" content="RouteRush - graph-based order prioritization and delivery system. Team 404 CREW.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231c1511'/%3E%3Cpath d='M7 22l7-10 5 6 6-11' fill='none' stroke='%23e0793f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='25' cy='7' r='3' fill='%23e8b04a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <svg width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 23l8-11 6 7 8-12" fill="none" stroke="#e0793f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="27" cy="7" r="3.2" fill="#e8b04a"/><circle cx="5" cy="23" r="2.6" fill="#e0793f"/></svg>
+      <span>RouteRush</span>
+    </div>
+    <nav class="nav" id="nav" aria-label="Pages"></nav>
+    <div class="side-foot">Team 404 CREW<br>DSCPP-III-2026-T090<br><span style="opacity:.7">press 1-7 to jump, n for a new order</span></div>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <span class="status" id="status"><i></i>Connecting...</span>
+      <div class="row"><button class="btn sm ghost" id="top-reset">Reset data</button><button class="btn sm primary" id="top-new">+ New order</button></div>
+    </header>
+    <main id="view" aria-live="polite"><div class="card empty"><div class="spinner"></div><p class="muted">Loading the warehouse...</p></div></main>
+  </div>
+</div>
+<div id="modal-root"></div>
+<div id="toasts" aria-live="polite"></div>
+<noscript><p style="padding:20px">RouteRush needs JavaScript.</p></noscript>
+
+<!-- three.js: local copy first (web/vendor/three.min.js), then the CDN. The map works without the 3D view if both fail. -->
+<script src="vendor/three.min.js"></script>
+<script>window.THREE || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>');</script>
+<script src="js/core.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/pages.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
