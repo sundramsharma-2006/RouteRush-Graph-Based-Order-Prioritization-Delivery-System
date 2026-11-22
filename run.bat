@@ -3,6 +3,7 @@ REM Build and run RouteRush from this folder (no git or make needed).
 REM Usage: double-click, or in a terminal:  run.bat            (demo)
 REM                                          run.bat test       (unit tests)
 REM                                          run.bat menu       (interactive menu)
+REM                                          run.bat web        (web frontend in the browser)
 REM                                          run.bat bench      (benchmarks)
 REM                                          run.bat demo --fifo --pick=naive
 cd /d "%~dp0"
@@ -40,6 +41,14 @@ if /i "%MODE%"=="bench" (
 if /i "%MODE%"=="menu" (
     g++ %FLAGS% src\main.cpp -o routerush.exe || (pause & exit /b 1)
     routerush.exe data --menu
+    exit /b 0
+)
+
+if /i "%MODE%"=="web" (
+    g++ %FLAGS% -pthread src\server.cpp -o routerush_web.exe -lws2_32 || (pause & exit /b 1)
+    echo Opening http://localhost:8080  -  press Ctrl+C in this window to stop.
+    start /b cmd /c "timeout /t 2 >nul & start http://localhost:8080"
+    routerush_web.exe data
     exit /b 0
 )
 
